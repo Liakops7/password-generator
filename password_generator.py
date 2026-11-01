@@ -3,17 +3,9 @@
 # "string" comes with Python, so we don't need to install anything.
 import string
 
-# string.ascii_lowercase holds all lowercase English letters (a-z)
-print("Lowercase:", string.ascii_lowercase)
+# Module for generating random values
+import random
 
-# string.ascii_uppercase holds all uppercase English letters (A-Z)
-print("Uppercase:", string.ascii_uppercase)
-
-# string.digits holds the digits 0-9
-print("Digits:", string.digits)
-
-# string.punctuation holds the special symbols, e.g. ! @ # $ %
-print("Symbols:", string.punctuation)
 
 # We can join strings with "+" to build one big "pool" of characters.
 # Later, the password will be built by picking characters from this pool.
@@ -24,7 +16,18 @@ all_characters = (
     + string.punctuation
 )
 
-print("All characters:", all_characters)
+# How many characters the password will have (fixed for now)
+length = 12
 
-# len() returns how many characters a string has
-print("Total characters available:", len(all_characters))
+# Start with an empty string; we'll add characters to it one by one
+password = ""
+
+# range(length) produces the numbers 0, 1, 2, ..., 11 (12 numbers in total).
+# The loop body therefore runs exactly 12 times.
+# We name the loop variable "_" because we don't actually use its value;
+# this is a common Python convention meaning "I don't care about this variable".
+for _ in range(length):
+    # Pick one random character from the pool and append it to the password
+    password += random.choice(all_characters)
+
+print("Your password:", password)
