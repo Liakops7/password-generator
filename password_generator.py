@@ -6,14 +6,17 @@ import string
 # Module for generating random values
 import random
 
-
 # We can join strings with "+" to build one big "pool" of characters.
 # Later, the password will be built by picking characters from this pool.
+aall_characters = (
+        string.ascii_lowercase
+        + string.ascii_uppercase
+        + string.digits
+        + string.punctuation
+)
+
 all_characters = (
     string.ascii_lowercase
-    + string.ascii_uppercase
-    + string.digits
-    + string.punctuation
 )
 
 MIN_LENGTH = 8
@@ -38,14 +41,31 @@ while True:
     else:
         print(f"The length must be between {MIN_LENGTH} and {MAX_LENGTH}.")
 
+question = ["uppercase", "symbols", "numbers"]
+export = ["ascii_uppercase", "punctuation", "digits"]
 
-# Shows the message, waits for the user to type something and press Enter.
-# Whatever they type is returned as a STRING.
-length = int(input("Password length: "))
+for i in range(2):
+    while True:
+        user_input = input(f"{question[i]} Y or N: ")
+        if user_input in ("y", "Y"):
+            all_characters += export[i]
+            break
+        else:
+            if user_input in ("n", "N"):
+                break
+            else:
+                print("The answer is invalid.")
+
+#Uppercase
+#Symbols
+#Numbers
+#
+#
+#
+
 
 # Start with an empty string; we'll add characters to it one by one
 password = ""
-
 # range(length) produces the numbers 0, 1, 2, ..., 11 (12 numbers in total).
 # The loop body therefore runs exactly 12 times.
 # We name the loop variable "_" because we don't actually use its value;
