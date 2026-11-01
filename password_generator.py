@@ -32,20 +32,24 @@ while True:
     else:
         print(f"The length must be between {MIN_LENGTH} and {MAX_LENGTH}.")
 
-question = ["uppercase", "symbols", "numbers"]
-export = ["ascii_uppercase", "punctuation", "digits"]
+questions = ["uppercase", "symbols", "numbers"]
+character_groups = [string.ascii_uppercase, string.punctuation, string.digits]
 
-for i in range(len(question)):
+for i in range(len(questions)):
     while True:
-        user_input = input(f"{question[i]} Y or N: ").strip().lower()
-        if user_input in ("y"):
-            all_characters += export[i]
+        # Clean the answer: remove surrounding spaces and make it lowercase
+        answer = input(f"Include {questions[i]}? (y/n): ").strip().lower()
+
+        # A real tuple: the COMMA between the values is what makes it a tuple.
+        # "in" now checks if answer is EQUAL to one of the values,
+        # not if it appears INSIDE a string.
+        if answer in ("y", "yes"):
+            all_characters += character_groups[i]
             break
-        elif user_input in ("n"):
+        elif answer in ("n", "no"):
             break
         else:
-            print("The answer is invalid.")
-
+            print("Please answer with 'y' or 'n'.")
 
 # Start with an empty string; we'll add characters to it one by one
 password = ""
