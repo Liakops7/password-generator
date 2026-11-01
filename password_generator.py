@@ -16,8 +16,32 @@ all_characters = (
     + string.punctuation
 )
 
-# How many characters the password will have (fixed for now)
-length = 12
+MIN_LENGTH = 8
+MAX_LENGTH = 64
+# Keep asking until the user gives a valid number.
+# "while True" loops forever; we leave it with "break" once the input is OK.
+while True:
+    user_input = input(f"Password length ({MIN_LENGTH}-{MAX_LENGTH}): ")
+
+    try:
+        # Try converting the text to an integer
+        length = int(user_input)
+    except ValueError:
+        # int() failed, e.g. the user typed "abc" or "12.5"
+        print("Please enter a whole number.")
+        continue  # Skip the rest of this iteration and ask again
+
+    # If we got here, it's a number; now check that it's in range.
+    # Python allows chained comparisons: a <= x <= b
+    if MIN_LENGTH <= length <= MAX_LENGTH:
+        break  # Valid input, exit the loop
+    else:
+        print(f"The length must be between {MIN_LENGTH} and {MAX_LENGTH}.")
+
+
+# Shows the message, waits for the user to type something and press Enter.
+# Whatever they type is returned as a STRING.
+length = int(input("Password length: "))
 
 # Start with an empty string; we'll add characters to it one by one
 password = ""
