@@ -1,0 +1,13 @@
+# IntelliJ settings folder (personal to your machine)
+.idea/
+
+# IntelliJ module file
+*.iml
+
+# Virtual environment (anyone can recreate it, no need to upload it)
+.venv/
+venv/
+
+# Python's compiled cache files (created automatically when code runs)
+__pycache__/
+*.pyc
