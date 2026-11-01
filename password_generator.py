@@ -6,9 +6,6 @@ import string
 # Module for generating random values
 import random
 
-# We can join strings with "+" to build one big "pool" of characters.
-# Later, the password will be built by picking characters from this pool.
-
 all_characters = (
     string.ascii_lowercase
 )
@@ -41,10 +38,10 @@ export = ["ascii_uppercase", "punctuation", "digits"]
 for i in range(len(question)):
     while True:
         user_input = input(f"{question[i]} Y or N: ").strip().lower()
-        if user_input in "y":
+        if user_input in ("y"):
             all_characters += export[i]
             break
-        elif user_input in "n":
+        elif user_input in ("n"):
             break
         else:
             print("The answer is invalid.")
